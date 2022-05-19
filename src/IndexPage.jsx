@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 
 // Import the functions you need from the SDKs you need
-import {initializeApp} from 'firebase/app'
+import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, set, onValue } from "firebase/database";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -33,7 +33,8 @@ export const IndexPage = () => {
   useEffect(() => {
     onValue(dbRef, (snapshot) => {
       const newData = snapshot.val();
-      setData({...data, ...newData});
+      setData({ ...data, ...newData });
+      console.log(data);
     });
   }, []);
 
@@ -41,7 +42,7 @@ export const IndexPage = () => {
     console.log(text);
     set(dbRef, {
       sendText: text,
-      receiveText: data.receiveText
+      // receiveText: data.receiveText
     });
     e.preventDefault();
     setText('');
@@ -56,7 +57,7 @@ export const IndexPage = () => {
         <input type="submit" value="Submit" />
       </form>
       <h1>{data.sendText}</h1>
-      <h1>{data.receiveText}</h1>
+      {/* <h1>{data.receiveText}</h1> */}
     </>
   );
 }
