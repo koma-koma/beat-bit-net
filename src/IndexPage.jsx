@@ -53,7 +53,7 @@ export const IndexPage = () => {
     <div className="container" style={{ fontSize: "32px", textAlign: "center", marginTop: "30vh", height: "70vh" }}>
       <h1 style={{ marginBottom: "10px" }}>二人のパフォーマーのための通信規約</h1>
       <h2 style={{ marginBottom: "50px" }}>A Communication Protocol for Two Performers</h2>
-      <p>送信したいテキストを入力してください。</p>
+      <p>送信したいテキストを入力してください(英数のみ)。</p>
       <form onSubmit={handleSubmit}>
         <label>
           <input placeholder="Hello" value={text} onChange={(e) => { setText(e.target.value); }} type="text" name="name" />
