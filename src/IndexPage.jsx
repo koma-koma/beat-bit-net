@@ -33,31 +33,38 @@ export const IndexPage = () => {
   useEffect(() => {
     onValue(dbRef, (snapshot) => {
       const newData = snapshot.val();
+      console.log(snapshot.val());
       setData({ ...data, ...newData });
-      console.log(data);
     });
   }, []);
 
   const handleSubmit = (e) => {
+    console.log(data.receiveText);
     console.log(text);
     set(dbRef, {
       sendText: text,
-      // receiveText: data.receiveText
+      receiveText: data.receiveText
     });
     e.preventDefault();
     setText('');
   };
 
   return (
-    <>
+    <div className="container" style={{ fontSize: "32px", textAlign: "center", marginTop: "30vh", height: "70vh" }}>
+      <h1 style={{ marginBottom: "10px" }}>二人のパフォーマーのための通信規約</h1>
+      <h2 style={{ marginBottom: "50px" }}>A Communication Protocol for Two Performers</h2>
+      <p>送信したいテキストを入力してください。</p>
       <form onSubmit={handleSubmit}>
         <label>
-          <input value={text} onChange={(e) => { setText(e.target.value); }} type="text" name="name" />
+          <input placeholder="Hello" value={text} onChange={(e) => { setText(e.target.value); }} type="text" name="name" />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" style={{ marginLeft: "10px" }} />
       </form>
-      <h1>{data.sendText}</h1>
+      {/* <h1>{data.sendText}</h1> */}
       {/* <h1>{data.receiveText}</h1> */}
-    </>
+      <div style={{ marginTop: "100px" }}>
+        <a href="https://keitamiyashita.com">keitamiyashita.com</a>
+      </div>
+    </div>
   );
 }
